@@ -2,8 +2,11 @@ package com.example.Book_my_Show_Application.Entities;
 
 
 import com.example.Book_my_Show_Application.Enums.ShowType;
-import jakarta.persistence.*;
+import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,6 +19,9 @@ import java.util.List;
 @Entity
 @Table(name="shows")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ShowEntity {
 
     @Id

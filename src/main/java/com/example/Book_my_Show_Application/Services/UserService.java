@@ -1,6 +1,7 @@
 package com.example.Book_my_Show_Application.Services;
 
 
+import com.example.Book_my_Show_Application.Convertors.UserConvertor;
 import com.example.Book_my_Show_Application.Entities.UserEntity;
 import com.example.Book_my_Show_Application.EntryDtos.UserEntryDto;
 import com.example.Book_my_Show_Application.Repository.UserRepository;
@@ -13,20 +14,14 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public void addUser(UserEntryDto userEntryDto){
+    public String addUser(UserEntryDto userEntryDto)throws Exception,NullPointerException{
 
-        //Here we need to convert and save.
-
-        /*
-        old method: create an object and set attributes
-         */
-
-        //new method to create objects using builder()
-
-        UserEntity userEntity = UserEntity.builder().age(userEntryDto.getAge()).name(userEntryDto.getName())
-                .address(userEntryDto.getAddress()).email(userEntryDto.getEmail()).mobNo(userEntryDto.getMobNo()).build();
+        UserEntity userEntity = UserConvertor.convertDtoToEntity(userEntryDto);
 
         userRepository.save(userEntity);
-        //This is set all of the attribute in one go.
+
+        return "User Added successfully";
+
+
     }
 }
